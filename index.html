@@ -29,7 +29,7 @@
         },
         methods: {
           onDayClickHandler(date){
-            console.log(date) 
+            window.Telegram.WebApp.sendData(JSON.stringify(date.id));
           }
         }
       })
