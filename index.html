@@ -4,41 +4,30 @@
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
     <meta http-equiv='x-ua-compatible' content='ie=edge'>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- IMPORTANT: No CSS link needed as of v1 - It's all inlined -->
+    <!-- Pre v1.0.0 versions need the minified css -->
+    <!-- <link rel='stylesheet' href='https://unpkg.com/v-calendar/lib/v-calendar.min.css'> -->
   </head>
   <body>
     <div id='app'>
-      <VCalendar />
-      <VDatePicker v-model='selectedDate' />
+      <v-calendar></v-calendar>
+      <v-date-picker v-model='selectedDate' />
     </div>
 
-    <!-- Vue  -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <!-- VCalendar (automatically installed) -->
-    <script src="https://unpkg.com/v-calendar@3.0.3"></script>
+    <!-- 1. Link Vue Javascript -->
+    <script src='https://unpkg.com/vue/dist/vue.js'></script>
 
+    <!-- 2. Link VCalendar Javascript (Plugin automatically installed) -->
+    <script src='https://unpkg.com/v-calendar'></script>
+
+    <!--3. Create the Vue instance-->
     <script>
-      const { createApp } = Vue
-
-      createApp({
-        setup() {
-          const mainButton = window.Telegram.WebApp.MainButton;
-          mainButton.text = "Save Preferences";
-          mainButton.enable();
-          mainButton.show();
-          // and make it send the "foods" object (as JSON string) back to the backend
-          mainButton.onClick(function(){
-            window.Telegram.WebApp.sendData(JSON.stringify($scope.foods));
-        })
-        },
-        data() {
-          return {
-            selectedDate: null,
-          }
-        },
-        
-      }).mount('#app')
-
-    
+      new Vue({
+        el: '#app',
+        data: {
+          selectedDate: null,
+        }
+      })
     </script>
   </body>
 </html>
