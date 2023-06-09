@@ -10,8 +10,8 @@
   </head>
   <body>
     <div id='app'>
-      <v-calendar></v-calendar>
-      <v-date-picker v-model='selectedDate' />
+      <v-calendar @dayclick="onDayClickHandler"></v-calendar>
+      pepe
     </div>
 
     <!-- 1. Link Vue Javascript -->
@@ -26,8 +26,14 @@
         el: '#app',
         data: {
           selectedDate: null,
+        },
+        methods: {
+          onDayClickHandler(date){
+            console.log(date) 
+          }
         }
       })
+
     </script>
   </body>
 </html>
