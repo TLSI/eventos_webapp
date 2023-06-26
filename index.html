@@ -12,7 +12,7 @@
     <div id='app'>
      
       <v-calendar @dayclick="onDayClickHandler" is-expanded></v-calendar>
-      11
+      12
     </div>
 
     <script src='https://unpkg.com/vue@2.7.14/dist/vue.js'></script>
@@ -27,10 +27,13 @@
           texto: 'Info inicial'
         },
         created: function () {
+          console.log(windows.Telegram);
+          
           let uri = window.location.search.substring(1); 
           let params = new URLSearchParams(uri);
           let token = params.get("token");
-          
+
+        
          
           axios.get('http://desarrollo.tlsi.es:8080/api/events/external', {
             params: { token }
