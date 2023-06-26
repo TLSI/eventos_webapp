@@ -10,6 +10,7 @@
   </head>
   <body>
     <div id='app'>
+      {{texto}}
       <v-calendar @dayclick="onDayClickHandler" is-expanded></v-calendar>
     </div>
 
@@ -25,9 +26,10 @@
         el: '#app',
         data: {
           selectedDate: null,
+          texto: ''
         },
         created: function () {
-          console.log(window.Telegram.WebApp.initData);
+          this.texto = window.Telegram.WebApp.initData;
         },
         methods: {
           onDayClickHandler(date){
