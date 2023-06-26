@@ -12,7 +12,7 @@
     <div id='app'>
       {{texto}}
       <v-calendar @dayclick="onDayClickHandler" is-expanded></v-calendar>
-      1
+      2
     </div>
 
     <!-- 1. Link Vue Javascript -->
@@ -30,7 +30,7 @@
           texto: 'Info inicial'
         },
         created: function () {
-          this.texto = window.Telegram.WebAppUser.id;
+          this.texto = window.Telegram.WebApp.WebAppUser;
         },
         methods: {
           onDayClickHandler(date){
