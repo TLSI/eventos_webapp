@@ -26,6 +26,9 @@
         data: {
           selectedDate: null,
         },
+        created: function () {
+          console.log(window.Telegram.WebApp.initData);
+        },
         methods: {
           onDayClickHandler(date){
             window.Telegram.WebApp.sendData(JSON.stringify("WEB_DAY_" + date.id));
