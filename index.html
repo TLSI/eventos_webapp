@@ -12,7 +12,7 @@
     <div id='app'>
      
       <v-calendar @dayclick="onDayClickHandler" is-expanded></v-calendar>
-      3
+      4
     </div>
 
     <!-- 1. Link Vue Javascript -->
@@ -31,8 +31,12 @@
         },
         created: function () {
           console.log('Start');
-          console.log(window.Telegram.WebApp.WebAppUser);
-          console.log(window.Telegram.WebApp.WebAppChat)
+          console.log(window.Telegram.WebApp.initData);
+          console.log(window.Telegram.WebApp.initDataUnsafe)
+          console.log(window.Telegram.WebApp);
+          console.log(window.Telegram.WebAppUser);
+          console.log(window.Telegram.WebAppChat);
+          
         },
         methods: {
           onDayClickHandler(date){
