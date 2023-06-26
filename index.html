@@ -12,7 +12,7 @@
     <div id='app'>
      
       <v-calendar @dayclick="onDayClickHandler" is-expanded></v-calendar>
-      7
+      8
     </div>
 
     <!-- 1. Link Vue Javascript -->
@@ -36,7 +36,7 @@
           console.log(window.Telegram);
           let uri = window.location.search.substring(1); 
           let params = new URLSearchParams(uri);
-          console.log(params);
+          console.log(params.get("token"));
           
         },
         methods: {
