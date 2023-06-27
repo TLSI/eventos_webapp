@@ -10,9 +10,7 @@
   </head>
   <body>
     <div id='app'>
-     
-      <v-calendar @dayclick="onDayClickHandler" :attributes='attributes' is-expanded></v-calendar>
-      14
+     <v-calendar @dayclick="onDayClickHandler" :attributes='attributes' is-expanded></v-calendar>
     </div>
 
     <script src='https://unpkg.com/vue@2.7.14/dist/vue.js'></script>
@@ -46,13 +44,16 @@
           ]
         },
         mounted: function () {
-          console.log(window.Telegram);
-          console.log(this.attributes);
-
           let token = window.Telegram.WebView.initParams.token;
-          token = 480385860;
-          axios.get('http://localhost:8080/api/calendar/' + token)
-            .then(function (response) {
+          this.loadData(token);          
+        },
+        methods: {
+          onDayClickHandler(date){
+            window.Telegram.WebApp.sendData(JSON.stringify("WEB_DAY_" + date.id));
+          },
+          async loadData(token) {
+            await axios.get('https://desarrollo.tlsi.es:8080/api/calendar/' + token)
+            .then(response => {
               console.log(this.attributes);
               this.attributes[1].dates = response.data.availables
               this.attributes[2].dates = response.data.events
@@ -60,12 +61,6 @@
             .catch( function(error) {
               console.log(error);
             });
-
-          
-        },
-        methods: {
-          onDayClickHandler(date){
-            window.Telegram.WebApp.sendData(JSON.stringify("WEB_DAY_" + date.id));
           }
         }
       })
