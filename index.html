@@ -51,10 +51,9 @@
           onDayClickHandler(date){
             window.Telegram.WebApp.sendData(JSON.stringify("WEB_DAY_" + date.id));
           },
-          async loadData(token) {
-            await axios.get('https://desarrollo.tlsi.es:8080/api/calendar/' + token)
+          loadData(token) {
+            axios.get('https://desarrollo.tlsi.es:8080/api/calendar/' + token)
             .then(response => {
-              console.log(this.attributes);
               this.attributes[1].dates = response.data.availables
               this.attributes[2].dates = response.data.events
             })
