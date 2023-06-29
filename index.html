@@ -64,7 +64,14 @@
               console.log('Axios Error: ' + error);
             });
             */
-           fetch('https://desarrollo.tlsi.es:8080/api/calendar/' + token)
+           fetch('https://desarrollo.tlsi.es:8080/api/calendar/' + token, 
+           {
+            method: 'GET',
+            headers: {
+              'Origin': 'https://tlsi.github.io',
+              'Accept': '*/*'
+            }
+           })
             .then( response => {
               if (!response.ok) {
                 throw Error(`HTTP error: ${response.status}`);
