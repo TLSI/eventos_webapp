@@ -52,13 +52,15 @@
             window.Telegram.WebApp.sendData(JSON.stringify("WEB_DAY_" + date.id));
           },
           loadData(token) {
-            axios.get('https://desarrollo.tlsi.es:8080/api/calendar/' + token)
+            axios.get('https://desarrollo.tlsi.es:8080/api/calendar/' + token, {
+              crossDomain: true
+            })
             .then(response => {
               this.attributes[1].dates = response.data.availables
               this.attributes[2].dates = response.data.events
             })
-            .catch( function(error) {
-              console.log(error);
+            .catch( error => {
+              console.log('Axios Error: ' + error);
             });
           }
         }
